@@ -1,10 +1,11 @@
 import { FC, memo } from 'react';
 import { useLocation } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+
 
 import { BurgerIngredientUI } from '@ui';
 import { TBurgerIngredientProps } from './type';
 import { addIngredient, setBun } from '../../services/redusers/burgerSlice';
+import { useDispatch } from '../../services/store';
 
 export const BurgerIngredient: FC<TBurgerIngredientProps> = memo(
   ({ ingredient, count }) => {
@@ -15,7 +16,7 @@ export const BurgerIngredient: FC<TBurgerIngredientProps> = memo(
     const handleAdd = () => {
       if (!isBun) {
         dispatch(
-          addIngredient({ ...ingredient, id: `${ingredient._id} + ${count}` })
+          addIngredient(ingredient)
         );
       } else {
         dispatch(setBun({ ...ingredient, id: `${ingredient._id} + ${count}` }));

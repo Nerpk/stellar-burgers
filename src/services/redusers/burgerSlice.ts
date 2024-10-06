@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import { getIngredientsApi } from '../../utils/burger-api';
 import { TIngredient, TConstructorIngredient } from '@utils-types';
+import { v4 as uuid4 } from 'uuid';
 
 export const fetchIngredients = createAsyncThunk(
   'burger/fetchIngredients',
@@ -39,8 +40,13 @@ const burgerSlice = createSlice({
       state.constructorItems.bun = action.payload;
     },
     // Добавление ингредиента в конструктор
-    addIngredient: (state, action: PayloadAction<TConstructorIngredient>) => {
-      state.constructorItems.ingredients.push(action.payload);
+    addIngredient: {
+      reducer: (state, action: PayloadAction<TIngredient & { uniqueId: string }>) => {
+        state.ingredients.push(action.payload);
+      },
+      prepare: (ingredient: TIngredient) => (
+         { payload: { ...ingredient, uniqueId: uuid4() } }
+      )
     },
     // Передвижение ингредиента вверх по списку
     moveIngredientUp: (state, action: PayloadAction<number>) => {
