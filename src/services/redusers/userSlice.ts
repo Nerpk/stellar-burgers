@@ -114,6 +114,7 @@ const userSlice = createSlice({
     },
     outUser: (state) => {
         state.user = null;
+        state.isAuth = false;
     }
   },
   extraReducers: (builder) => {
