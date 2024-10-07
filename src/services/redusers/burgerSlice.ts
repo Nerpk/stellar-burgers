@@ -28,7 +28,7 @@ const initialState: TBurgerState = {
   constructorItems: {
     bun: null,
     ingredients: []
-  },
+  }
 };
 
 const burgerSlice = createSlice({
@@ -41,12 +41,15 @@ const burgerSlice = createSlice({
     },
     // Добавление ингредиента в конструктор
     addIngredient: {
-      reducer: (state, action: PayloadAction<TIngredient & { uniqueId: string }>) => {
+      reducer: (
+        state,
+        action: PayloadAction<TIngredient & { uniqueId: string }>
+      ) => {
         state.ingredients.push(action.payload);
       },
-      prepare: (ingredient: TIngredient) => (
-         { payload: { ...ingredient, uniqueId: uuid4() } }
-      )
+      prepare: (ingredient: TIngredient) => ({
+        payload: { ...ingredient, uniqueId: uuid4() }
+      })
     },
     // Передвижение ингредиента вверх по списку
     moveIngredientUp: (state, action: PayloadAction<number>) => {
@@ -77,11 +80,11 @@ const burgerSlice = createSlice({
     // Удаление ингредиента из конструктора
     removeIngredient: (state, action: PayloadAction<number>) => {
       state.constructorItems.ingredients.splice(action.payload, 1);
-    }, 
+    },
     removeAllIngredients: (state) => {
       state.constructorItems.bun = null;
       state.constructorItems.ingredients = [];
-    },
+    }
   },
   extraReducers: (builder) => {
     builder
@@ -105,7 +108,7 @@ export const {
   addIngredient,
   moveIngredientUp,
   moveIngredientDown,
-  removeIngredient, 
+  removeIngredient,
   removeAllIngredients
 } = burgerSlice.actions;
 

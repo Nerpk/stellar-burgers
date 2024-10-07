@@ -34,52 +34,52 @@ const initialState: UserState = {
 
 // Асинхронный экшен для регистрации пользователя
 export const registerUser = createAsyncThunk(
-    'user/register',
-    async (userData: TRegisterData, { rejectWithValue }) => {
-      try {
-        const response = await registerUserApi(userData);
-        if (!response?.success) {
-          return rejectWithValue(null);
-        }
-        storeTokens(response.refreshToken, response.accessToken);
-        localStorage.setItem('user', JSON.stringify(response.user));
-        
-        return response.user;
-      } catch (error) {
-        return rejectWithValue(error);
+  'user/register',
+  async (userData: TRegisterData, { rejectWithValue }) => {
+    try {
+      const response = await registerUserApi(userData);
+      if (!response?.success) {
+        return rejectWithValue(null);
       }
+      storeTokens(response.refreshToken, response.accessToken);
+      localStorage.setItem('user', JSON.stringify(response.user));
+
+      return response.user;
+    } catch (error) {
+      return rejectWithValue(error);
     }
-  );
-  
-  // Асинхронный экшен для авторизации пользователя
-export const loginUser = createAsyncThunk(
-    'user/login',
-    async (loginData: TLoginData, { rejectWithValue }) => {
-      try {
-        const response = await loginUserApi(loginData);
-        if (!response.success) {
-          return rejectWithValue(response); 
-        }
-        
-        localStorage.setItem('user', JSON.stringify(response.user));
-        storeTokens(response.refreshToken, response.accessToken);
-        return response.user;
-      } catch (error) {
-        return rejectWithValue(error);
-      }
-    }
+  }
 );
-  
-export const restoreUser = createAsyncThunk(
-    'user/restoreUser',
-    async (_, { dispatch }) => {
-      const storedUser = localStorage.getItem('user');
-      if (storedUser) {
-        const user = JSON.parse(storedUser);
-        dispatch(setAuth(true));
-        dispatch(setUser(user))
+
+// Асинхронный экшен для авторизации пользователя
+export const loginUser = createAsyncThunk(
+  'user/login',
+  async (loginData: TLoginData, { rejectWithValue }) => {
+    try {
+      const response = await loginUserApi(loginData);
+      if (!response.success) {
+        return rejectWithValue(response);
       }
+
+      localStorage.setItem('user', JSON.stringify(response.user));
+      storeTokens(response.refreshToken, response.accessToken);
+      return response.user;
+    } catch (error) {
+      return rejectWithValue(error);
     }
+  }
+);
+
+export const restoreUser = createAsyncThunk(
+  'user/restoreUser',
+  async (_, { dispatch }) => {
+    const storedUser = localStorage.getItem('user');
+    if (storedUser) {
+      const user = JSON.parse(storedUser);
+      dispatch(setAuth(true));
+      dispatch(setUser(user));
+    }
+  }
 );
 
 // Асинхронный экшен для обновления данных пользователя
@@ -88,7 +88,7 @@ export const updateUser = createAsyncThunk(
   async (userData: Partial<TRegisterData>, { rejectWithValue }) => {
     try {
       const response = await updateUserApi(userData);
-      return response.user; 
+      return response.user;
     } catch (error) {
       return rejectWithValue(error);
     }
@@ -97,9 +97,9 @@ export const updateUser = createAsyncThunk(
 
 // Асинхронный экшен для выхода из системы
 export const logoutUser = createAsyncThunk('user/logout', async () => {
-    await logoutApi();
-    localStorage.removeItem('user');
-    localStorage.removeItem('refreshToken');
+  await logoutApi();
+  localStorage.removeItem('user');
+  localStorage.removeItem('refreshToken');
 });
 
 const userSlice = createSlice({
@@ -110,11 +110,11 @@ const userSlice = createSlice({
       state.isAuth = action.payload;
     },
     setUser: (state, action: PayloadAction<TUser>) => {
-        state.user = action.payload;
+      state.user = action.payload;
     },
     outUser: (state) => {
-        state.user = null;
-        state.isAuth = false;
+      state.user = null;
+      state.isAuth = false;
     }
   },
   extraReducers: (builder) => {
