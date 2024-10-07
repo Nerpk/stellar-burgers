@@ -40,16 +40,8 @@ const burgerSlice = createSlice({
       state.constructorItems.bun = action.payload;
     },
     // Добавление ингредиента в конструктор
-    addIngredient: {
-      reducer: (
-        state,
-        action: PayloadAction<TIngredient & { uniqueId: string }>
-      ) => {
-        state.ingredients.push(action.payload);
-      },
-      prepare: (ingredient: TIngredient) => ({
-        payload: { ...ingredient, uniqueId: uuid4() }
-      })
+    addIngredient: (state, action: PayloadAction<TConstructorIngredient>) => {
+      state.constructorItems.ingredients.push(action.payload);
     },
     // Передвижение ингредиента вверх по списку
     moveIngredientUp: (state, action: PayloadAction<number>) => {

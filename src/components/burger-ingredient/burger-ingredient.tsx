@@ -14,7 +14,9 @@ export const BurgerIngredient: FC<TBurgerIngredientProps> = memo(
 
     const handleAdd = () => {
       if (!isBun) {
-        dispatch(addIngredient(ingredient));
+        dispatch(
+          addIngredient({ ...ingredient, id: `${ingredient._id} + ${count}` })
+        );
       } else {
         dispatch(setBun({ ...ingredient, id: `${ingredient._id} + ${count}` }));
       }

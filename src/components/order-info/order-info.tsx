@@ -8,11 +8,18 @@ import { useSelector } from '../../services/store';
 export const OrderInfo: FC = () => {
   const { number } = useParams();
   const orderNumber = number ? parseInt(number, 10) : null;
-  const { orders } = useSelector((state) => state.order.allOrders);
+  const { allOrders, orders } = useSelector((state) => state.order);
   const { ingredients } = useSelector((state) => state.burger);
-  const orderData = orders.find((item) => item.number === orderNumber);
+  let orderData = orders.find((item) => item.number === orderNumber);
+
+  if (!orderData) {
+    orderData = allOrders.orders.find((item) => item.number === orderNumber);
+  }
 
   const orderInfo = useMemo(() => {
+    console.log(orders);
+    console.log(orderNumber);
+    console.log(orderData);
     if (!orderData || !ingredients.length) return null;
 
     const date = new Date(orderData.createdAt);
@@ -54,6 +61,7 @@ export const OrderInfo: FC = () => {
   }, [orderData, ingredients]);
 
   if (!orderInfo) {
+    //console.log(4);
     return <Preloader />;
   }
 
