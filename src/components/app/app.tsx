@@ -48,11 +48,11 @@ const App = () => {
       <AppHeader />
       <Routes location={backgroundLocation || location}>
         <Route path='*' element={<NotFound404 />} />
-        <Route path='/' element={<ConstructorPage />} />
-        <Route path='/feed' element={<Feed />} />
+        <Route path='/stellar-burgers/' element={<ConstructorPage />} />
+        <Route path='/stellar-burgers/feed' element={<Feed />} />
 
         <Route
-          path='/login'
+          path='/stellar-burgers/login'
           element={
             <UnprotectedRoute>
               <Login />
@@ -60,7 +60,7 @@ const App = () => {
           }
         />
         <Route
-          path='/register'
+          path='/stellar-burgers/register'
           element={
             <UnprotectedRoute>
               <Register />
@@ -68,7 +68,7 @@ const App = () => {
           }
         />
         <Route
-          path='/forgot-password'
+          path='/stellar-burgers/forgot-password'
           element={
             <UnprotectedRoute>
               <ForgotPassword />
@@ -76,7 +76,7 @@ const App = () => {
           }
         />
         <Route
-          path='/reset-password'
+          path='/stellar-burgers/reset-password'
           element={
             <UnprotectedRoute>
               <ResetPassword />
@@ -85,7 +85,7 @@ const App = () => {
         />
 
         <Route
-          path='/profile'
+          path='/stellar-burgers/profile'
           element={
             <ProtectedRoute>
               <Profile />
@@ -93,7 +93,7 @@ const App = () => {
           }
         />
         <Route
-          path='/profile/orders'
+          path='/stellar-burgers/profile/orders'
           element={
             <ProtectedRoute>
               <ProfileOrders />
@@ -101,10 +101,10 @@ const App = () => {
           }
         />
 
-        <Route path='/feed/:number' element={<OrderInfo />} />
-        <Route path='/ingredients/:id' element={<IngredientDetails />} />
+        <Route path='/stellar-burgers/feed/:number' element={<OrderInfo />} />
+        <Route path='/stellar-burgers/ingredients/:id' element={<IngredientDetails />} />
         <Route
-          path='/profile/orders/:number'
+          path='/stellar-burgers/profile/orders/:number'
           element={
             <ProtectedRoute>
               <OrderInfo />
@@ -116,7 +116,7 @@ const App = () => {
       {backgroundLocation && (
         <Routes>
           <Route
-            path='/feed/:number'
+            path='/stellar-burgers/feed/:number'
             element={
               <Modal title='Order Info' onClose={handleCloseModal}>
                 <OrderInfo />
@@ -124,7 +124,7 @@ const App = () => {
             }
           />
           <Route
-            path='/ingredients/:id'
+            path='/stellar-burgers/ingredients/:id'
             element={
               <Modal title='Ingredient Info' onClose={handleCloseModal}>
                 <IngredientDetails />
@@ -132,7 +132,7 @@ const App = () => {
             }
           />
           <Route
-            path='/profile/orders/:number'
+            path='/stellar-burgers/profile/orders/:number'
             element={
               <ProtectedRoute>
                 <Modal title='Order Info' onClose={handleCloseModal}>
