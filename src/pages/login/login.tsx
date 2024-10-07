@@ -7,7 +7,7 @@ import { loginUser, setAuth } from '../../services/redusers/userSlice';
 export const Login: FC = () => {
   const { user } = useSelector((state) => state.user);
 
-  const [email, setEmail] = useState((user?.email) as string);
+  const [email, setEmail] = useState(user?.email as string);
   const [password, setPassword] = useState('');
 
   const dispatch = useDispatch();

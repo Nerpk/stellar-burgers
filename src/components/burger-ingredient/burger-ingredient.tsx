@@ -1,7 +1,6 @@
 import { FC, memo } from 'react';
 import { useLocation } from 'react-router-dom';
 
-
 import { BurgerIngredientUI } from '@ui';
 import { TBurgerIngredientProps } from './type';
 import { addIngredient, setBun } from '../../services/redusers/burgerSlice';
@@ -15,9 +14,7 @@ export const BurgerIngredient: FC<TBurgerIngredientProps> = memo(
 
     const handleAdd = () => {
       if (!isBun) {
-        dispatch(
-          addIngredient(ingredient)
-        );
+        dispatch(addIngredient(ingredient));
       } else {
         dispatch(setBun({ ...ingredient, id: `${ingredient._id} + ${count}` }));
       }

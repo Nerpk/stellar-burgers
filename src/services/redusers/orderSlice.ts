@@ -104,7 +104,7 @@ const orderSlice = createSlice({
     // Сброс деталей заказа
     clearOrderDetails: (state) => {
       state.orderDetails = null;
-    }, 
+    },
     setNewOrder: (state, action: PayloadAction<TOrder>) => {
       state.newOrder.orderModalData = action.payload;
     },
@@ -187,5 +187,6 @@ const orderSlice = createSlice({
   }
 });
 
-export const { clearOrderDetails, clearNewOrder, setNewOrder } = orderSlice.actions;
+export const { clearOrderDetails, clearNewOrder, setNewOrder } =
+  orderSlice.actions;
 export default orderSlice.reducer;
