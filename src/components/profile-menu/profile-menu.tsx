@@ -17,7 +17,7 @@ export const ProfileMenu: FC = () => {
     dispatch(logoutUser());
     dispatch(outUser());
     dispatch(removeAllIngredients());
-    navigate('/login');
+    navigate('/stellar-burgers/login');
   };
 
   return <ProfileMenuUI handleLogout={handleLogout} pathname={pathname} />;

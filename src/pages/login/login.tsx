@@ -21,7 +21,7 @@ export const Login: FC = () => {
       })
       .finally(() => {
         setAuth(true);
-        navigate('/');
+        navigate('/stellar-burgers/');
       });
   };
 

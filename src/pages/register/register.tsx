@@ -20,7 +20,7 @@ export const Register: FC = () => {
       .unwrap()
       .finally(() => {
         setAuth(true);
-        navigate('/', { replace: true });
+        navigate('/stellar-burgers/', { replace: true });
       });
   };
 

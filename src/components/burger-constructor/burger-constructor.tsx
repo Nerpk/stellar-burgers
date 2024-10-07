@@ -20,7 +20,7 @@ export const BurgerConstructor: FC = () => {
 
   const onOrderClick = () => {
     if (!isAuth) {
-      navigate('/login');
+      navigate('/stellar-burgers/login');
     } else {
       if (constructorItems?.bun && constructorItems?.ingredients.length !== 0) {
         const ingredientIds = [
