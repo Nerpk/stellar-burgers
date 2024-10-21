@@ -102,7 +102,10 @@ const App = () => {
         />
 
         <Route path='/stellar-burgers/feed/:number' element={<OrderInfo />} />
-        <Route path='/stellar-burgers/ingredients/:id' element={<IngredientDetails />} />
+        <Route
+          path='/stellar-burgers/ingredients/:id'
+          element={<IngredientDetails />}
+        />
         <Route
           path='/stellar-burgers/profile/orders/:number'
           element={

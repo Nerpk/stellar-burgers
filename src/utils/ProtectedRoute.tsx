@@ -12,7 +12,7 @@ export const ProtectedRoute: FC<{ children: ReactElement }> = ({
   return isAuth ? (
     children
   ) : (
-    <Navigate to='/login' state={{ from: location }} replace />
+    <Navigate to='/stellar-burgers/login' state={{ from: location }} replace />
   );
 };
 
@@ -24,7 +24,7 @@ export const UnprotectedRoute: FC<{ children: ReactElement }> = ({
   const { isAuth } = useSelector((state) => state.user);
 
   return isAuth ? (
-    <Navigate to='/' state={{ from: location }} replace />
+    <Navigate to='/stellar-burgers/' state={{ from: location }} replace />
   ) : (
     children
   );

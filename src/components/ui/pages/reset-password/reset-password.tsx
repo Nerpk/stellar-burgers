@@ -56,7 +56,7 @@ export const ResetPasswordUI: FC<ResetPasswordUIProps> = ({
       </form>
       <div className={`${styles.question} text text_type_main-default pb-6`}>
         Вспомнили пароль?
-        <Link to='/login' className={`pl-2 ${styles.link}`}>
+        <Link to='/stellar-burgers/login' className={`pl-2 ${styles.link}`}>
           Войти
         </Link>
       </div>

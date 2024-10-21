@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch } from '../../services/store';
-import { logoutUser, outUser } from '../../services/redusers/userSlice'; // экшен для выхода пользователя
+import { logoutUser, outUser } from '../../services/redusers/userSlice';
 import { ProfileMenuUI } from '@ui';
 import { clearTokens } from '../../utils/tokens';
 import { removeAllIngredients } from '../../services/redusers/burgerSlice';
@@ -17,7 +17,7 @@ export const ProfileMenu: FC = () => {
     dispatch(logoutUser());
     dispatch(outUser());
     dispatch(removeAllIngredients());
-    navigate('/login');
+    navigate('/stellar-burgers/login');
   };
 
   return <ProfileMenuUI handleLogout={handleLogout} pathname={pathname} />;
