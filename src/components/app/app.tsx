@@ -21,10 +21,10 @@ import {
   useNavigate
 } from 'react-router-dom';
 import { ProtectedRoute, UnprotectedRoute } from '../../utils/ProtectedRoute';
-import { useDispatch, useSelector } from '../../services/store';
-import { useEffect, useState } from 'react';
+import { useDispatch } from '../../services/store';
+import { useEffect } from 'react';
 import { fetchIngredients } from '../../services/redusers/burgerSlice';
-import { fetchFeeds, fetchOrders } from '../../services/redusers/orderSlice';
+import { fetchFeeds } from '../../services/redusers/orderSlice';
 import { restoreUser } from '../../services/redusers/userSlice';
 
 const App = () => {
