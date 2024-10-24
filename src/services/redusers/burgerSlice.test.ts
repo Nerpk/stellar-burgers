@@ -6,21 +6,12 @@ import reducer, {
     setBun,
     removeAllIngredients,
     TBurgerState,
-    fetchIngredients
+    fetchIngredients, 
+    initialState,
   } from './burgerSlice'; 
   import { TConstructorIngredient } from '@utils-types';
 
   describe('burgerSlice constructor', () => {
-    const initialState: TBurgerState = {
-        ingredients: [],
-        loading: false,
-        error: null,
-        constructorItems: {
-        bun: null,
-        ingredients: []
-        }
-    };
-    
     let ingredient1: TConstructorIngredient;
     let ingredient2: TConstructorIngredient;
     let bun: TConstructorIngredient;

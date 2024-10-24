@@ -21,7 +21,7 @@ export type TBurgerState = {
   };
 };
 
-const initialState: TBurgerState = {
+export const initialState: TBurgerState = {
   ingredients: [],
   loading: false,
   error: null,
