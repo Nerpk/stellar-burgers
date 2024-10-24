@@ -13,7 +13,7 @@ type TAllOrders = {
   totalToday: number;
 };
 
-type TOrderState = {
+export type TOrderState = {
   orders: TOrder[]; // Все заказы пользователя
   orderDetails: TOrder | null; // Данные одного конкретного заказа
   loading: boolean; // Индикатор загрузки
@@ -189,4 +189,7 @@ const orderSlice = createSlice({
 
 export const { clearOrderDetails, clearNewOrder, setNewOrder } =
   orderSlice.actions;
+
+export { initialState as orderInitialState };
+
 export default orderSlice.reducer;

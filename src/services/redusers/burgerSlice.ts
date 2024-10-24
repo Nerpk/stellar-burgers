@@ -11,7 +11,7 @@ export const fetchIngredients = createAsyncThunk(
   }
 );
 
-type TBurgerState = {
+export type TBurgerState = {
   ingredients: TIngredient[];
   loading: boolean;
   error: string | null;
@@ -21,7 +21,7 @@ type TBurgerState = {
   };
 };
 
-const initialState: TBurgerState = {
+export const initialState: TBurgerState = {
   ingredients: [],
   loading: false,
   error: null,
@@ -103,5 +103,7 @@ export const {
   removeIngredient,
   removeAllIngredients
 } = burgerSlice.actions;
+
+export { initialState as burgerInitialState };
 
 export default burgerSlice.reducer;

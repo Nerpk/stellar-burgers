@@ -12,7 +12,7 @@ import { getCookie } from '../../utils/cookie';
 import { storeTokens } from '../../utils/tokens';
 import { TUser } from '@utils-types';
 
-interface UserState {
+export interface UserState {
   user: {
     email: string;
     name: string;
@@ -169,10 +169,13 @@ const userSlice = createSlice({
     // Выход из системы
     builder.addCase(logoutUser.fulfilled, (state) => {
       state.isAuth = false;
+      state.user = null;
     });
   }
 });
 
 export const { setAuth, setUser, outUser } = userSlice.actions;
+
+export { initialState as userInitialState };
 
 export default userSlice.reducer;
